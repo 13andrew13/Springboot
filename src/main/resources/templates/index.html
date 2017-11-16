@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.js" ></script>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/myJs.js"></script>
+
+</head>
+<body>
+
+
+<div class="container">
+    <div class="form-group">
+        <form class="form-control">
+            Name <input id="name"/>
+            Surname <input id="surname"/>
+            <input id="login" type="submit"/>
+        </form>
+    </div>
+</div>
+<script>
+
+
+    $("#showAll").click(function () {
+        $.getJSON("/get-users",function (data) {
+            var user = $.parseJSON(data);
+
+            alert(user);
+
+        })
+    });
+    $("#login").click(function (){
+        $.post("/login",{name:$("#name").val(),surname:$("#surname").val()},function () {
+            alert("Success");
+        })
+    })
+
+
+
+</script>
+
+
+
+</body>
+</html>
